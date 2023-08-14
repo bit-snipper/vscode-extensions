@@ -3,6 +3,7 @@
   "displayName": "code-snippets",
   "description": "code-snippets",
   "version": "0.0.1",
+  "type": "commonjs",
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -49,6 +50,7 @@
     "typescript": "^5.1.3"
   },
   "dependencies": {
-    "isomorphic-fetch": "^3.0.0"
+    "isomorphic-fetch": "^3.0.0",
+    "snippets-sdk": "^0.0.9"
   }
 }
