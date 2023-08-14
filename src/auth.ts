@@ -1,4 +1,4 @@
-const { SnippetsSDK } = require("snippets-sdk");
+// import { SnippetsSDK } from "snippets-sdk";
 import * as vscode from "vscode";
 
 export const auth = async () => {
@@ -15,11 +15,11 @@ export const auth = async () => {
     vscode.window.showInformationMessage("Token entered: " + useranme);
 
     if (token && useranme) {
-      const sdk = new SnippetsSDK(token, useranme);
+      // const sdk = new SnippetsSDK(token, useranme);
       return {
         token,
         useranme,
-        sdk
+        // sdk
       };
     } else {
       return null;

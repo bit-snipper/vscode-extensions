@@ -1,0 +1,8 @@
+{
+  "commands": {
+    "code-snippets.setSnippets": {
+      "title": "My Custom Command",
+      "icon": ""
+    }
+  }
+}

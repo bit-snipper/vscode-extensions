@@ -3,7 +3,6 @@
   "displayName": "code-snippets",
   "description": "code-snippets",
   "version": "0.0.1",
-  "type": "commonjs",
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -19,6 +18,14 @@
       {
         "command": "code-snippets.auth",
         "title": "login to code-snippets"
+      },
+      {
+        "command": "code-snippets.setSnippets",
+        "title": "set a snippets to repository"
+      },
+      {
+        "command": "code-snippets.getSelect",
+        "title": "get select code"
       }
     ],
     "authentication": [
@@ -26,7 +33,16 @@
         "id": "azuredevopspat",
         "label": "Azure DevOps PAT"
       }
-    ]
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorHasSelection",
+          "command": "code-snippets.setSnippets",
+          "group": "navigation"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "pnpm run compile",

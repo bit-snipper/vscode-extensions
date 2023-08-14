@@ -20,23 +20,44 @@ export function activate(context: vscode.ExtensionContext) {
 
     auth().then((data) => {
       if (data) {
-        const { token, sdk, useranme } = data;
+        const { token, useranme } = data;
         context.globalState.update("codesnippets-token", token);
         context.globalState.update("codesnippets-username", useranme);
-        console.log(sdk);
       }
     });
+  } else {
+    context.globalState.update("codesnippets-token", undefined);
+    context.globalState.update("codesnippets-username", undefined);
   }
 
-  let disposable = vscode.commands.registerCommand("code-snippets.auth", function () {
-    auth().then((data) => {
-      if (data) {
-        const { token, sdk, useranme } = data;
-        context.globalState.update("codesnippets-token", token);
-        context.globalState.update("codesnippets-username", useranme);
-        console.log(sdk);
-      }
-    });
+  // 鉴权
+  let disposable = vscode.commands.registerCommand("code-snippets.auth", async function () {
+    const data = await auth();
+    if (data) {
+      const { token, useranme } = data;
+      context.globalState.update("codesnippets-token", token);
+      context.globalState.update("codesnippets-username", useranme);
+      console.log(data);
+    }
+  });
+
+  // 选中代码右键
+  let setSnippetsDisposable = vscode.commands.registerCommand("code-snippets.setSnippets", function (selectedText) {
+    if (selectedText) {
+      // 处理选中的代码
+
+      console.log(selectedText);
+    }
+  });
+
+  // 获取选中的代码
+  const getSelectCodeDisposable = vscode.commands.registerCommand("code-snippets.getSelect", () => {
+    const editor = vscode.window.activeTextEditor;
+    if (editor) {
+      const selectedText = editor.document.getText(editor.selection);
+      // vscode.window.showInformationMessage('Selected code: ' + selectedText);
+      vscode.commands.executeCommand("code-snippets.setSnippets", selectedText);
+    }
   });
 
   const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
@@ -46,5 +67,7 @@ export function activate(context: vscode.ExtensionContext) {
   statusBarItem.show();
 
   context.subscriptions.push(disposable);
+  context.subscriptions.push(setSnippetsDisposable);
   context.subscriptions.push(statusBarItem);
+  context.subscriptions.push(getSelectCodeDisposable);
 }
