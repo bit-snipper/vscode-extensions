@@ -21,17 +21,11 @@
       },
       {
         "command": "code-snippets.setSnippets",
-        "title": "set a snippets to repository"
+        "title": "inject code-snippets"
       },
       {
-        "command": "code-snippets.getSelect",
-        "title": "get select code"
-      }
-    ],
-    "authentication": [
-      {
-        "id": "azuredevopspat",
-        "label": "Azure DevOps PAT"
+        "command": "code-snippets.open",
+        "title": "open code snippets"
       }
     ],
     "menus": {
@@ -40,6 +34,25 @@
           "when": "editorHasSelection",
           "command": "code-snippets.setSnippets",
           "group": "navigation"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "code-snippets",
+          "title": "code-snippets",
+          "icon": "media/logo.svg"
+        }
+      ]
+    },
+    "views": {
+      "code-snippets": [
+        {
+          "id": "nodeDependencies",
+          "name": "code-snippets",
+          "icon": "media/logo.svg",
+          "contextualTitle": "Package Explorer"
         }
       ]
     }
