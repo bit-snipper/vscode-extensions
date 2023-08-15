@@ -80,6 +80,6 @@
   },
   "dependencies": {
     "isomorphic-fetch": "^3.0.0",
-    "snippets-sdk": "^0.0.9"
+    "snippets-sdk": "^0.0.11"
   }
 }

@@ -9,8 +9,8 @@ dependencies:
     specifier: ^3.0.0
     version: 3.0.0
   snippets-sdk:
-    specifier: ^0.0.9
-    version: 0.0.9(typescript@5.1.3)
+    specifier: ^0.0.11
+    version: 0.0.11(typescript@5.1.3)
 
 devDependencies:
   '@types/glob':
@@ -1380,8 +1380,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /snippets-sdk@0.0.9(typescript@5.1.3):
-    resolution: {integrity: sha512-H2WjMASV76MonEY9WPT2RJk3uw+xx06qsazFIbRPfUow4m5gCntmNQ0RwylqDnjSc4eZtsL2NNdp6srfi9Hj4A==}
+  /snippets-sdk@0.0.11(typescript@5.1.3):
+    resolution: {integrity: sha512-w8+lkyG2VuI/zLa+L2g1MRXxd6rodksZyN5iUcv4ZRlF+cNktKv3ND9e0aUNdLzdwdLSD7Sczq9j8Yn991r+FA==}
     dependencies:
       axios: 1.4.0
       concurrently: 8.2.0
