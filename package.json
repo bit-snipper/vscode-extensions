@@ -80,8 +80,8 @@
   },
   "dependencies": {
     "@types/uuid": "^9.0.2",
+    "code-snippets-sdk": "0.0.5-beta",
     "isomorphic-fetch": "^3.0.0",
-    "snippets-sdk": "^0.0.11",
     "uuid": "^9.0.0"
   }
 }
