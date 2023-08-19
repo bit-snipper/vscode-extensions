@@ -3,7 +3,7 @@
 import "isomorphic-fetch";
 import * as vscode from "vscode";
 import { auth, login, logout } from "./auth";
-import { DepNodeProvider } from "./views";
+import { TreeProvider } from "./views";
 import { setSnippets } from "./actions";
 
 // this method is called when your extension is activated
@@ -44,9 +44,23 @@ export function activate(context: vscode.ExtensionContext) {
     }
   });
 
-  const nodeDependenciesProvider = new DepNodeProvider(rootPath);
+  const PanelDisposable = vscode.commands.registerCommand("code-snippets.openWeb", () => {
+    const panel = vscode.window.createWebviewPanel(
+      "code-snippets-web", // 面板的唯一标识符
+      "code snippets", // 面板的标题
+      vscode.ViewColumn.One, // 面板显示的列
+      {
+        enableScripts: true // 启用脚本
+      }
+    );
 
-  let openDisposable = vscode.window.registerTreeDataProvider("nodeDependencies", nodeDependenciesProvider);
+    // 加载外部网页
+    panel.webview.html = '<iframe src="https://code-snippets.zeabur.app/" style="width:100%;height:100vh"></iframe>';
+  });
+
+  const treeProvider = new TreeProvider();
+
+  let openDisposable = vscode.window.registerTreeDataProvider("code-snippets.webpanel", treeProvider);
 
   const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
   statusBarItem.text = "😊code-snippets";

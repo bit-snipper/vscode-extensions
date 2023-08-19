@@ -24,8 +24,8 @@
         "title": "inject code-snippets"
       },
       {
-        "command": "code-snippets.open",
-        "title": "open code snippets"
+        "command": "code-snippets.openWeb",
+        "title": "open web"
       }
     ],
     "menus": {
@@ -49,7 +49,7 @@
     "views": {
       "code-snippets": [
         {
-          "id": "nodeDependencies",
+          "id": "code-snippets.webpanel",
           "name": "code-snippets",
           "icon": "media/logo.svg",
           "contextualTitle": "Package Explorer"
