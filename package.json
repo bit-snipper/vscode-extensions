@@ -22,10 +22,6 @@
       {
         "command": "code-snippets.setSnippets",
         "title": "inject code-snippets"
-      },
-      {
-        "command": "code-snippets.openWeb",
-        "title": "open web"
       }
     ],
     "menus": {
@@ -51,8 +47,8 @@
         {
           "id": "code-snippets.webpanel",
           "name": "code-snippets",
-          "icon": "media/logo.svg",
-          "contextualTitle": "Package Explorer"
+          "contextualTitle": "Code snippets",
+          "type": "webview"
         }
       ]
     }
@@ -80,7 +76,7 @@
   },
   "dependencies": {
     "@types/uuid": "^9.0.2",
-    "code-snippets-sdk": "0.0.5-beta",
+    "code-snippets-sdk": "0.0.2-alpla",
     "isomorphic-fetch": "^3.0.0",
     "uuid": "^9.0.0"
   }

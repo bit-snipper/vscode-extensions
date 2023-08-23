@@ -14,7 +14,7 @@ export const login = async (context: vscode.ExtensionContext) => {
     context.globalState.update("codesnippets-username", username);
 
     if (token && username) {
-      const sdk = new SnippetsSDK(token, username);
+      const sdk = new SnippetsSDK(token);
       sdkSotre.dispatch({
         type: SdkAction.create,
         payload: {
@@ -40,7 +40,7 @@ export const auth = (context: vscode.ExtensionContext) => {
   if (!token || !username) {
     login(context);
   } else if (token && username) {
-    const sdk = new SnippetsSDK(token, username);
+    const sdk = new SnippetsSDK(token);
     sdkSotre.dispatch({
       type: SdkAction.create,
       payload: {

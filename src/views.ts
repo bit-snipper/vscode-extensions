@@ -1,33 +1,31 @@
 import * as vscode from "vscode";
 import * as fs from "fs";
 import * as path from "path";
+import { WebviewViewProvider } from "vscode";
 
-export class TreeProvider implements vscode.TreeDataProvider<Webpanel> {
-  private _onDidChangeTreeData: vscode.EventEmitter<Webpanel | undefined | void> = new vscode.EventEmitter<
-    Webpanel | undefined | void
-  >();
-
-  readonly onDidChangeTreeData: vscode.Event<Webpanel | undefined | void> = this._onDidChangeTreeData.event;
-
-  constructor() {}
-
-  refresh(): void {
-    this._onDidChangeTreeData.fire();
-  }
-
-  getTreeItem(element: Webpanel): vscode.TreeItem {
-    const treeItem = new vscode.TreeItem("Open Webview");
-
-    treeItem.command = {
-      command: "code-snippets.openWeb",
-      title: "Open Webview"
+export class WebProvider implements WebviewViewProvider {
+  resolveWebviewView(
+    webviewView: vscode.WebviewView,
+    context: vscode.WebviewViewResolveContext,
+    token: vscode.CancellationToken
+  ): void | Thenable<void> {
+    webviewView.webview.options = {
+      enableScripts: true
     };
-    return treeItem;
-  }
 
-  getChildren(element?: Webpanel): Thenable<Webpanel[]> {
-    return Promise.resolve([]);
+    webviewView.webview.html = `
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+      </head>
+      <body>
+        <iframe src="https://code-snippets.zeabur.app/" frameborder="0" style="height: 100vh; width: 100%"></iframe>
+      </body>
+    </html>
+
+    `;
   }
 }
-
-export class Webpanel extends vscode.TreeItem {}
