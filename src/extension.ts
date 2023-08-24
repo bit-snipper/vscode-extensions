@@ -2,7 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import "isomorphic-fetch";
 import * as vscode from "vscode";
-import { auth, login, logout } from "./auth";
+import { auth, create } from "./auth";
 import { WebProvider } from "./views";
 import { setSnippets } from "./actions";
 
@@ -13,9 +13,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   auth(context);
 
-  let AuthDisposable = vscode.commands.registerCommand("code-snippets.auth", async function () {
-    await login(context);
-  });
+  let AuthDisposable = vscode.commands.registerCommand("code-snippets.create", () => create(context));
 
   // commands
   vscode.commands.registerCommand("code-snippets.setSnippets", async function () {

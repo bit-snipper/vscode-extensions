@@ -1,16 +1,12 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 dependencies:
   '@types/uuid':
     specifier: ^9.0.2
     version: 9.0.2
   code-snippets-sdk:
-    specifier: 0.0.2-alpla
-    version: 0.0.2-alpla
+    specifier: 0.0.5-alpla
+    version: 0.0.5-alpla
   isomorphic-fetch:
     specifier: ^3.0.0
     version: 3.0.0
@@ -1012,12 +1008,13 @@ packages:
       wrap-ansi: 7.0.0
     dev: false
 
-  /code-snippets-sdk@0.0.2-alpla:
-    resolution: {integrity: sha512-LxtMXrs4RTiMzmnfgld5zJ7FmBfZaMc6OSUFbYqN8cBJ69/iBRO/dnPMbjvrPw1CjDCijflzTnFIetNoyVbQMQ==}
+  /code-snippets-sdk@0.0.5-alpla:
+    resolution: {integrity: sha512-WOrCoyFlvc8vSktJtKa5JQMm4Qpr/ZzoCU31nQW2CSFjdrYIfHq5UG/WpV3vBzwdN+vzSg580a22XepCOcNcjQ==}
     dependencies:
       axios: 1.4.0
       buffer: 6.0.3
       firebase: 10.3.0
+      lowdb: 6.0.1
       process: 0.11.10
       uuid: 9.0.0
     transitivePeerDependencies:
@@ -1640,6 +1637,13 @@ packages:
     resolution: {integrity: sha512-lcHwpNoggQTObv5apGNCTdJrO69eHOZMi4BNC+rTLER8iHAqGrUVeLh/irVIM7zTw2bOXA8T6uNPeujwOLg/2Q==}
     dev: false
 
+  /lowdb@6.0.1:
+    resolution: {integrity: sha512-1ktuKYLlQzAWwl4/PQkIr8JzNXgcTM6rAhpXaQ6BR+VwI98Q8ZwMFhBOn9u0ldcW3K/WWzhYpS3xyGTshgVGzA==}
+    engines: {node: '>=16'}
+    dependencies:
+      steno: 3.0.0
+    dev: false
+
   /lru-cache@6.0.0:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
@@ -1979,6 +1983,11 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /steno@3.0.0:
+    resolution: {integrity: sha512-uZtn7Ht9yXLiYgOsmo8btj4+f7VxyYheMt8g6F1ANjyqByQXEE2Gygjgenp3otHH1TlHsS4JAaRGv5wJ1wvMNw==}
+    engines: {node: '>=14.16'}
+    dev: false
+
   /string-width@4.2.3:
     resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
     engines: {node: '>=8'}
@@ -2195,3 +2204,7 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false

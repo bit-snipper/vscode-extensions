@@ -3,8 +3,7 @@ import { Reducer, createStore } from "./utils/redux";
 
 interface SdkState {
   sdk: null | SnippetsSDK;
-  username: string | null;
-  token: string | null;
+  databaseURL: string | null;
 }
 
 export enum SdkAction {
@@ -15,25 +14,23 @@ export enum SdkAction {
 
 const initialState = {
   sdk: null,
-  username: null,
-  token: null
+  databaseURL: null
 };
 
 const reducer: Reducer<SdkState, SdkAction> = (state, action) => {
   switch (action.type) {
     case SdkAction.create:
       if (action.payload) {
-        const { sdk, username, token } = action.payload;
-        if (sdk && username && token) {
-          state = { sdk, username, token };
+        const { sdk, databaseURL } = action.payload;
+        if (sdk && databaseURL) {
+          state = { sdk, databaseURL };
         }
       }
       break;
     case SdkAction.destory:
       state = {
         sdk: null,
-        username: null,
-        token: null
+        databaseURL: null
       };
       break;
     default:

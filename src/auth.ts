@@ -1,54 +1,42 @@
-import { SnippetsSDK } from "code-snippets-sdk";
+import { NodeSnippetsSDK } from "code-snippets-sdk/node";
 import * as vscode from "vscode";
 import { SdkAction, sdkSotre } from "./store";
 
-export const login = async (context: vscode.ExtensionContext) => {
+export const create = async (context: vscode.ExtensionContext) => {
   try {
-    const token = await vscode.window.showInputBox({
-      prompt: "Please enter your token:"
+    context.globalState.update("codesnippets-databaseURL", undefined);
+    const databaseURL = await vscode.window.showInputBox({
+      prompt: "Please enter your databaseURL:"
     });
-    context.globalState.update("codesnippets-token", token);
-    const username = await vscode.window.showInputBox({
-      prompt: "Please enter your userName:"
-    });
-    context.globalState.update("codesnippets-username", username);
+    context.globalState.update("codesnippets-databaseURL", databaseURL);
 
-    if (token && username) {
-      const sdk = new SnippetsSDK(token);
+    if (databaseURL) {
+      const sdk = new NodeSnippetsSDK(databaseURL);
       sdkSotre.dispatch({
         type: SdkAction.create,
         payload: {
           sdk,
-          username,
-          token
+          databaseURL
         }
       });
-      vscode.window.showInformationMessage("login success");
+      vscode.window.showInformationMessage("create success");
     }
   } catch (e) {}
 };
 
-export const logout = (context: vscode.ExtensionContext) => {
-  context.globalState.update("codesnippets-token", undefined);
-  context.globalState.update("codesnippets-username", undefined);
-  sdkSotre.dispatch({ type: SdkAction.destory });
-};
-
 export const auth = (context: vscode.ExtensionContext) => {
-  const token: string | undefined = context.globalState.get("codesnippets-token");
-  const username: string | undefined = context.globalState.get("codesnippets-username");
-  if (!token || !username) {
-    login(context);
-  } else if (token && username) {
-    const sdk = new SnippetsSDK(token);
+  const databaseURL: string | undefined = context.globalState.get("codesnippets-databaseURL");
+  if (databaseURL) {
+    const sdk = new NodeSnippetsSDK(databaseURL);
     sdkSotre.dispatch({
       type: SdkAction.create,
       payload: {
         sdk,
-        username,
-        token
+        databaseURL
       }
     });
     vscode.window.showInformationMessage("login success");
+  } else {
+    create(context);
   }
 };

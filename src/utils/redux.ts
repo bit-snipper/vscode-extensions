@@ -23,7 +23,6 @@ export const createStore = <T = any, N = any>(initialState: T, reducer: Reducer<
 
   const subscribe = (callback: Function) => {
     if (typeof callback !== "function") return;
-
     callbacks.push(callback);
   };
 

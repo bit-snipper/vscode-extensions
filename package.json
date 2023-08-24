@@ -16,7 +16,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "code-snippets.auth",
+        "command": "code-snippets.create",
         "title": "login to code-snippets"
       },
       {
@@ -76,7 +76,7 @@
   },
   "dependencies": {
     "@types/uuid": "^9.0.2",
-    "code-snippets-sdk": "0.0.2-alpla",
+    "code-snippets-sdk": "0.0.5-alpla",
     "isomorphic-fetch": "^3.0.0",
     "uuid": "^9.0.0"
   }
