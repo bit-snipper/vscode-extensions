@@ -1,8 +1,9 @@
-import { NodeSnippetsSDK } from "code-snippets-sdk/node";
 import * as vscode from "vscode";
 import { SdkAction, sdkSotre } from "./store";
 
 export const create = async (context: vscode.ExtensionContext) => {
+  const codeSnippetsSDK = await import('code-snippets-sdk/node');
+
   try {
     context.globalState.update("codesnippets-databaseURL", undefined);
     const databaseURL = await vscode.window.showInputBox({
@@ -11,7 +12,7 @@ export const create = async (context: vscode.ExtensionContext) => {
     context.globalState.update("codesnippets-databaseURL", databaseURL);
 
     if (databaseURL) {
-      const sdk = new NodeSnippetsSDK(databaseURL);
+      const sdk = new codeSnippetsSDK.NodeSnippetsSDK(databaseURL);
       sdkSotre.dispatch({
         type: SdkAction.create,
         payload: {
@@ -21,13 +22,14 @@ export const create = async (context: vscode.ExtensionContext) => {
       });
       vscode.window.showInformationMessage("create success");
     }
-  } catch (e) {}
+  } catch (e) { }
 };
 
-export const auth = (context: vscode.ExtensionContext) => {
+export const auth = async (context: vscode.ExtensionContext) => {
+  const codeSnippetsSDK = await import('code-snippets-sdk/node');
   const databaseURL: string | undefined = context.globalState.get("codesnippets-databaseURL");
   if (databaseURL) {
-    const sdk = new NodeSnippetsSDK(databaseURL);
+    const sdk = new codeSnippetsSDK.NodeSnippetsSDK(databaseURL);
     sdkSotre.dispatch({
       type: SdkAction.create,
       payload: {
