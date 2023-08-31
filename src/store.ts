@@ -1,8 +1,8 @@
-import { SnippetsSDK } from "code-snippets-sdk/index";
+import type { NodeSnippetsSDK } from "code-snippets-sdk";
 import { Reducer, createStore } from "./utils/redux";
 
 interface SdkState {
-  sdk: null | SnippetsSDK;
+  sdk: null | NodeSnippetsSDK;
   databaseURL: string | null;
 }
 
