@@ -76,7 +76,7 @@
   },
   "dependencies": {
     "@types/uuid": "^9.0.2",
-    "code-snippets-sdk": "0.0.14-alpla",
+    "code-snippets-sdk-node": "0.0.2-alpla",
     "isomorphic-fetch": "^3.0.0",
     "uuid": "^9.0.0"
   }

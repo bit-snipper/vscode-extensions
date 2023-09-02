@@ -1,4 +1,4 @@
-import type { NodeSnippetsSDK } from "code-snippets-sdk";
+import type { NodeSnippetsSDK } from "code-snippets-sdk-node";
 import { Reducer, createStore } from "./utils/redux";
 
 interface SdkState {
