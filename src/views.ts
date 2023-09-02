@@ -1,12 +1,8 @@
 import * as vscode from "vscode";
-import { WebviewViewProvider } from "vscode";
+import { WebviewViewProvider, TreeDataProvider } from "vscode";
 
 export class WebProvider implements WebviewViewProvider {
-  resolveWebviewView(
-    webviewView: vscode.WebviewView,
-    context: vscode.WebviewViewResolveContext,
-    token: vscode.CancellationToken
-  ): void | Thenable<void> {
+  resolveWebviewView(webviewView: vscode.WebviewView, context: vscode.WebviewViewResolveContext, token: vscode.CancellationToken): void | Thenable<void> {
     webviewView.webview.options = {
       enableScripts: true
     };
@@ -27,3 +23,25 @@ export class WebProvider implements WebviewViewProvider {
     `;
   }
 }
+
+export class TreeProvider implements TreeDataProvider<TreeView> {
+  onDidChangeTreeData?: vscode.Event<void | TreeView | TreeView[] | null | undefined> | undefined;
+
+  getTreeItem(element: TreeView): vscode.TreeItem | Thenable<vscode.TreeItem> {
+    const treeItem = new vscode.TreeItem("Open Webview");
+    treeItem.command = {
+      command: "extension.showWebviewInTree",
+      title: "Open Webview"
+    };
+    return treeItem;
+  }
+
+  getChildren(element?: TreeView | undefined): vscode.ProviderResult<TreeView[]> {
+    return [];
+  }
+  // getParent?(element: TreeView): vscode.ProviderResult<TreeView> {}
+
+  // resolveTreeItem?(item: vscode.TreeItem, element: TreeView, token: vscode.CancellationToken): vscode.ProviderResult<vscode.TreeItem> {}
+}
+
+export class TreeView extends vscode.TreeItem {}

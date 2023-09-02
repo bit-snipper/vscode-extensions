@@ -1,16 +1,12 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 dependencies:
   '@types/uuid':
     specifier: ^9.0.2
     version: 9.0.2
-  code-snippets-sdk:
-    specifier: 0.0.14-alpla
-    version: 0.0.14-alpla
+  code-snippets-sdk-node:
+    specifier: 0.0.2-alpla
+    version: 0.0.2-alpla
   isomorphic-fetch:
     specifier: ^3.0.0
     version: 3.0.0
@@ -1012,8 +1008,25 @@ packages:
       wrap-ansi: 7.0.0
     dev: false
 
-  /code-snippets-sdk@0.0.14-alpla:
-    resolution: {integrity: sha512-s8Mw8E0nist3CxbOGLcCxkMIFFG3IK/UGRPYcJLT1phbPbnhK3tLErJqSBKMy2kkaFFW6UUubfDRgmgP+HRShQ==}
+  /code-snippets-sdk-node@0.0.2-alpla:
+    resolution: {integrity: sha512-FHg8O1tXVKZK08SVb/hJVtJZMopGFI4zxPTckIvN6sZuu/epwxub8yqw9WWwhML3oPqz3ykTqb45Ndaez1+Y4A==}
+    dependencies:
+      axios: 1.4.0
+      buffer: 6.0.3
+      code-snippets-sdk-web: 0.0.3-alpla
+      comment-parser: 1.4.0
+      firebase: 10.3.0
+      lowdb: 6.0.1
+      process: 0.11.10
+      uuid: 9.0.0
+    transitivePeerDependencies:
+      - '@react-native-async-storage/async-storage'
+      - debug
+      - encoding
+    dev: false
+
+  /code-snippets-sdk-web@0.0.3-alpla:
+    resolution: {integrity: sha512-Hyx5vUObVhzQMXZqmetP6rdiXK5Nxc1ENWTMjCJD8P9OXMRk39ox+XRs9ttB06LjcntcxFtIraue4GqFXUBYWQ==}
     dependencies:
       axios: 1.4.0
       buffer: 6.0.3
@@ -2214,3 +2227,7 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false

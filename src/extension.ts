@@ -3,15 +3,15 @@
 import "isomorphic-fetch";
 import * as vscode from "vscode";
 import { auth, create } from "./auth";
-import { WebProvider } from "./views";
+import { TreeProvider } from "./views";
 import { setSnippets } from "./actions";
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
+export async function activate(context: vscode.ExtensionContext) {
   console.log("vscode code-snippets is starting");
 
-  auth(context);
+  await auth(context);
 
   let AuthDisposable = vscode.commands.registerCommand("code-snippets.create", () => create(context));
 
@@ -37,7 +37,7 @@ export function activate(context: vscode.ExtensionContext) {
   });
 
   // primary side bar treeProvider
-  vscode.window.registerWebviewViewProvider("code-snippets.webpanel", new WebProvider());
+  vscode.window.registerTreeDataProvider("code-snippets.tree", new TreeProvider());
 
   // status bar button
   const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
