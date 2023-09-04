@@ -26,6 +26,10 @@ export async function activate(context: vscode.ExtensionContext) {
       const selectedRange = editor.selection;
       if (!selectedRange.isEmpty) {
         const languageId = editor.document.languageId;
+        console.log({
+          code: selectedText,
+          language: languageId
+        });
         await setSnippets({
           code: selectedText,
           language: languageId,
@@ -38,6 +42,9 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // primary side bar treeProvider
   vscode.window.registerTreeDataProvider("code-snippets.tree", new TreeProvider());
+  vscode.commands.registerCommand("code-snippets.click", (label: string) => {
+    // 获取点击事件
+  });
 
   // status bar button
   const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);

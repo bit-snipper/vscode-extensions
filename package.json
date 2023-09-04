@@ -22,6 +22,10 @@
       {
         "command": "code-snippets.setSnippets",
         "title": "inject code-snippets"
+      },
+      {
+        "command": "code-snippets.click",
+        "title": "click view item "
       }
     ],
     "menus": {
@@ -46,7 +50,7 @@
       "code-snippets": [
         {
           "id": "code-snippets.tree",
-          "name": "code-snippets",
+          "name": "snippets",
           "contextualTitle": "Code snippets",
           "type": "tree"
         }
