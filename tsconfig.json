@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es2020",
+    "target": "ESNext",
     "outDir": "out",
     "lib": ["es6", "DOM"],
     "sourceMap": true,
@@ -11,7 +11,7 @@
     // "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
     // "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */
     // "noUnusedParameters": true,  /* Report errors on unused parameters. */
-    "typeRoots": ["node_modules/code-snippets-sdk-node/dist/index.d.ts"]
+    // "typeRoots": ["node_modules/code-snippets-sdk-node/dist/index.d.ts"]
   },
   "exclude": ["node_modules", ".vscode-test"]
 }

@@ -28,12 +28,7 @@ export class TreeProvider implements TreeDataProvider<TreeView> {
   onDidChangeTreeData?: vscode.Event<void | TreeView | TreeView[] | null | undefined> | undefined;
 
   getTreeItem(element: TreeView): vscode.TreeItem | Thenable<vscode.TreeItem> {
-    const treeItem = new vscode.TreeItem("Open Webview");
-    treeItem.command = {
-      command: "extension.showWebviewInTree",
-      title: "Open Webview"
-    };
-    return treeItem;
+    return element;
   }
 
   getChildren(element?: TreeView | undefined): vscode.ProviderResult<TreeView[]> {
@@ -44,4 +39,6 @@ export class TreeProvider implements TreeDataProvider<TreeView> {
   // resolveTreeItem?(item: vscode.TreeItem, element: TreeView, token: vscode.CancellationToken): vscode.ProviderResult<vscode.TreeItem> {}
 }
 
-export class TreeView extends vscode.TreeItem {}
+export class TreeView extends vscode.TreeItem {
+  
+}

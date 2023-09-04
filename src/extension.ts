@@ -42,7 +42,7 @@ export async function activate(context: vscode.ExtensionContext) {
   // status bar button
   const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
   statusBarItem.text = "😊code-snippets-debug";
-  statusBarItem.command = "code-snippets.auth";
+  statusBarItem.command = "code-snippets.create";
   statusBarItem.tooltip = "set baseUrl";
   statusBarItem.show();
 
