@@ -1,12 +1,16 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@types/uuid':
     specifier: ^9.0.2
     version: 9.0.2
   code-snippets-sdk-node:
-    specifier: 0.0.3-alpla
-    version: 0.0.3-alpla
+    specifier: 0.0.4-alpla
+    version: 0.0.4-alpla
   isomorphic-fetch:
     specifier: ^3.0.0
     version: 3.0.0
@@ -1012,8 +1016,8 @@ packages:
       wrap-ansi: 7.0.0
     dev: false
 
-  /code-snippets-sdk-node@0.0.3-alpla:
-    resolution: {integrity: sha512-J1Zu0aCL2czseGmGHZgdCaq68LW+C/mIRa7KkL1FVA6HCdM1yWKecAoLnlRH+ndMaEb4MV7sb/3mAJ613UyfVg==}
+  /code-snippets-sdk-node@0.0.4-alpla:
+    resolution: {integrity: sha512-EjC8rycxgSJz0NAkfqxOyfqFiIdh+/VXjaaciD5T3oDTnnpeTM4ijCt3U2BNT0nbzl1LR3As3Yorq3iWt3FF2w==}
     dependencies:
       '@alex-programmer/lightdb': 0.0.1-alpha
       axios: 1.4.0
@@ -2231,7 +2235,3 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false

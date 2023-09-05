@@ -3,7 +3,7 @@
 import "isomorphic-fetch";
 import * as vscode from "vscode";
 import { auth, create } from "./auth";
-import { TreeProvider } from "./views";
+import { TreeProvider, WebProvider } from "./views";
 import { setSnippets } from "./actions";
 
 // this method is called when your extension is activated
@@ -16,7 +16,7 @@ export async function activate(context: vscode.ExtensionContext) {
   let AuthDisposable = vscode.commands.registerCommand("code-snippets.create", () => create(context));
 
   // commands
-  vscode.commands.registerCommand("code-snippets.setSnippets", async function () {
+  vscode.commands.registerCommand("code-snippets.insert", async function () {
     // 处理选中的代码
 
     const editor = vscode.window.activeTextEditor;
@@ -39,12 +39,22 @@ export async function activate(context: vscode.ExtensionContext) {
       }
     }
   });
+  // search
+  vscode.commands.registerCommand("code-snippets.search", async () => {});
+  // sync
+  vscode.commands.registerCommand("code-snippets.sync", async () => {});
+  // delete
+  vscode.commands.registerCommand("code-snippets.delete", async () => {});
+  // update
+  vscode.commands.registerCommand("code-snippets.update", async () => {});
+  // edit
+  vscode.commands.registerCommand("code-snippets.edit", async (label: string) => {});
+
+  // primary side bar webProvider
+  // vscode.window.registerWebviewViewProvider("code-snippets.web", new WebProvider());
 
   // primary side bar treeProvider
   vscode.window.registerTreeDataProvider("code-snippets.tree", new TreeProvider());
-  vscode.commands.registerCommand("code-snippets.click", (label: string) => {
-    // 获取点击事件
-  });
 
   // status bar button
   const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);

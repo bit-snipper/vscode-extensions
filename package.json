@@ -17,22 +17,50 @@
     "commands": [
       {
         "command": "code-snippets.create",
-        "title": "login to code-snippets"
+        "title": "login database"
       },
       {
-        "command": "code-snippets.setSnippets",
-        "title": "inject code-snippets"
+        "command": "code-snippets.insert",
+        "title": "inject snippets"
       },
       {
-        "command": "code-snippets.click",
-        "title": "click view item "
+        "command": "code-snippets.edit",
+        "title": "edit snippets "
+      },
+      {
+        "command": "code-snippets.search",
+        "title": "search  snippets"
+      },
+      {
+        "command": "code-snippets.sync",
+        "title": "sync snippets"
+      },
+      {
+        "command": "code-snippets.update",
+        "title": "update snippets"
+      },
+      {
+        "command": "code-snippets.delete",
+        "title": "delete snippets"
       }
     ],
     "menus": {
       "editor/context": [
         {
           "when": "editorHasSelection",
-          "command": "code-snippets.setSnippets",
+          "command": "code-snippets.insert",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "code-snippets.search",
+          "group": "search"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "code-snippets.search",
           "group": "navigation"
         }
       ]
@@ -50,7 +78,7 @@
       "code-snippets": [
         {
           "id": "code-snippets.tree",
-          "name": "snippets",
+          "name": "snippets tree",
           "contextualTitle": "Code snippets",
           "type": "tree"
         }
@@ -80,7 +108,7 @@
   },
   "dependencies": {
     "@types/uuid": "^9.0.2",
-    "code-snippets-sdk-node": "0.0.3-alpla",
+    "code-snippets-sdk-node": "0.0.4-alpla",
     "isomorphic-fetch": "^3.0.0",
     "uuid": "^9.0.0"
   }
