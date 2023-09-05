@@ -77,10 +77,10 @@
     "views": {
       "code-snippets": [
         {
-          "id": "code-snippets.tree",
-          "name": "snippets tree",
+          "id": "code-snippets.web",
+          "name": "snippets web",
           "contextualTitle": "Code snippets",
-          "type": "tree"
+          "type": "webview"
         }
       ]
     }

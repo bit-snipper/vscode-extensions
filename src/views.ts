@@ -25,7 +25,9 @@ export class WebProvider implements WebviewViewProvider {
     </html>
     `;
 
-    webviewView.webview.html = `<input type="text" placeholder="enter search" />`;
+    webviewView.webview.html = `<input type="text" placeholder="enter search" /> 
+    <div><button>login</button></div>
+    `;
   }
 }
 

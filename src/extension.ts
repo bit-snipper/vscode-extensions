@@ -51,10 +51,10 @@ export async function activate(context: vscode.ExtensionContext) {
   vscode.commands.registerCommand("code-snippets.edit", async (label: string) => {});
 
   // primary side bar webProvider
-  // vscode.window.registerWebviewViewProvider("code-snippets.web", new WebProvider());
+  vscode.window.registerWebviewViewProvider("code-snippets.web", new WebProvider());
 
   // primary side bar treeProvider
-  vscode.window.registerTreeDataProvider("code-snippets.tree", new TreeProvider());
+  // vscode.window.registerTreeDataProvider("code-snippets.tree", new TreeProvider());
 
   // status bar button
   const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
