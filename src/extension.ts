@@ -3,7 +3,7 @@
 import "isomorphic-fetch";
 import * as vscode from "vscode";
 import { auth, create } from "./auth";
-import { TreeProvider, WebProvider } from "./views";
+import { WebProvider } from "./views";
 import { setSnippets } from "./actions";
 
 // this method is called when your extension is activated
@@ -51,7 +51,7 @@ export async function activate(context: vscode.ExtensionContext) {
   vscode.commands.registerCommand("code-snippets.edit", async (label: string) => {});
 
   // primary side bar webProvider
-  vscode.window.registerWebviewViewProvider("code-snippets.web", new WebProvider());
+  vscode.window.registerWebviewViewProvider("code-snippets.web", new WebProvider(context));
 
   // primary side bar treeProvider
   // vscode.window.registerTreeDataProvider("code-snippets.tree", new TreeProvider());
