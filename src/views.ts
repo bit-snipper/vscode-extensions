@@ -2,6 +2,7 @@ import * as vscode from "vscode";
 import { WebviewViewProvider, TreeDataProvider, ProviderResult, scm, SourceControl } from "vscode";
 import * as fs from "fs";
 import path from "path";
+import { sdkSotre } from "./store";
 
 export class WebProvider implements WebviewViewProvider {
   private context: vscode.ExtensionContext;
@@ -18,9 +19,12 @@ export class WebProvider implements WebviewViewProvider {
       enableScripts: true
     };
 
+    const { databaseURL } = sdkSotre.getState();
     webviewView.webview.html = this.getWebViewContent(this.context, "src/view/webview.html");
     webviewView.webview.onDidReceiveMessage((data) => {
-      console.log(data);
+      if (data === 'ready') {
+        webviewView.webview.postMessage({ type: 'render', databaseURL });
+      }
     });
   }
 
