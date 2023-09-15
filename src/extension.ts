@@ -26,10 +26,6 @@ export async function activate(context: vscode.ExtensionContext) {
       const selectedRange = editor.selection;
       if (!selectedRange.isEmpty) {
         const languageId = editor.document.languageId;
-        console.log({
-          code: selectedText,
-          language: languageId
-        });
         await setSnippets({
           code: selectedText,
           language: languageId,

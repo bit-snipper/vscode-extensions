@@ -9,8 +9,8 @@ dependencies:
     specifier: ^9.0.2
     version: 9.0.2
   code-snippets-sdk-node:
-    specifier: 0.0.4-alpla
-    version: 0.0.4-alpla
+    specifier: 0.0.8-alpla
+    version: 0.0.8-alpla
   isomorphic-fetch:
     specifier: ^3.0.0
     version: 3.0.0
@@ -1016,14 +1016,15 @@ packages:
       wrap-ansi: 7.0.0
     dev: false
 
-  /code-snippets-sdk-node@0.0.4-alpla:
-    resolution: {integrity: sha512-EjC8rycxgSJz0NAkfqxOyfqFiIdh+/VXjaaciD5T3oDTnnpeTM4ijCt3U2BNT0nbzl1LR3As3Yorq3iWt3FF2w==}
+  /code-snippets-sdk-node@0.0.8-alpla:
+    resolution: {integrity: sha512-Edqhkr1tlU71+N012fC6Yv3KqyO19qEsyezzc9cgWSbNei5Hr383m15AnA7yyP+rURAmqhpxJ8MA0VG0agLz5A==}
     dependencies:
       '@alex-programmer/lightdb': 0.0.1-alpha
       axios: 1.4.0
       buffer: 6.0.3
-      code-snippets-sdk-web: 0.0.3-alpla
+      code-snippets-sdk-web: 0.0.6-alpla
       comment-parser: 1.4.0
+      dayjs: 1.11.9
       firebase: 10.3.0
       process: 0.11.10
       uuid: 9.0.0
@@ -1033,8 +1034,8 @@ packages:
       - encoding
     dev: false
 
-  /code-snippets-sdk-web@0.0.3-alpla:
-    resolution: {integrity: sha512-Hyx5vUObVhzQMXZqmetP6rdiXK5Nxc1ENWTMjCJD8P9OXMRk39ox+XRs9ttB06LjcntcxFtIraue4GqFXUBYWQ==}
+  /code-snippets-sdk-web@0.0.6-alpla:
+    resolution: {integrity: sha512-gwd1lz+uwStfMcZPHX+bNbIqamr8Ux5fhZcFFH/mT2aKYw19KsVYDSFEwu6/PpzFLEky77qqXTkiOeN1SZWhHg==}
     dependencies:
       axios: 1.4.0
       buffer: 6.0.3
@@ -1086,6 +1087,10 @@ packages:
       shebang-command: 2.0.0
       which: 2.0.2
     dev: true
+
+  /dayjs@1.11.9:
+    resolution: {integrity: sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==}
+    dev: false
 
   /debug@4.3.4(supports-color@8.1.1):
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}

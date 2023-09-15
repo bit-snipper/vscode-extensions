@@ -1,3 +1,4 @@
+import { Snippet } from "code-snippets-sdk-node/index";
 import { sdkSotre } from "./store";
 import { v4 as uuidv4 } from "uuid";
 
@@ -19,12 +20,8 @@ export const setSnippets = (data: { code: string; language: string; description:
             },
             0
           )
-          .then((data) => {
-            resolve({ msg: "success" });
-          })
-          .catch((e) => {
-            reject({ msg: e });
-          });
+          .then(resolve)
+          .catch(reject);
       }
     } catch (e) {
       reject({ msg: "error" });

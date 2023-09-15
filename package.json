@@ -109,7 +109,7 @@
   },
   "dependencies": {
     "@types/uuid": "^9.0.2",
-    "code-snippets-sdk-node": "0.0.4-alpla",
+    "code-snippets-sdk-node": "0.0.8-alpla",
     "isomorphic-fetch": "^3.0.0",
     "uuid": "^9.0.0"
   }
