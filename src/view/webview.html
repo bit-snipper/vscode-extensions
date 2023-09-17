@@ -33,9 +33,14 @@
 
       if (type === "render") {
         const src = `https://code-snippets.zeabur.app?databaseURL=${databaseURL}`;
+        // const src = `http://localhost:5173/?databaseURL=${databaseURL}`;
         const iframe = document.createElement("iframe");
+        iframe.setAttribute("id", "external-web");
         iframe.src = src;
+
         document.body.appendChild(iframe);
+      } else if (type === "sync") {
+        document.getElementById("external-web").contentWindow.postMessage({ type: "sync" }, "*");
       }
     });
 

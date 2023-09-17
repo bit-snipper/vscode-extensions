@@ -21,8 +21,8 @@
         "title": "login database"
       },
       {
-        "command": "code-snippets.insert",
-        "title": "inject snippets"
+        "command": "code-snippets.upload",
+        "title": "upload snippets"
       },
       {
         "command": "code-snippets.edit",
@@ -49,7 +49,7 @@
       "editor/context": [
         {
           "when": "editorHasSelection",
-          "command": "code-snippets.insert",
+          "command": "code-snippets.upload",
           "group": "navigation"
         }
       ],

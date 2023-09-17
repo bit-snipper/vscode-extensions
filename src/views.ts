@@ -1,45 +1,42 @@
 import * as vscode from "vscode";
-import { WebviewViewProvider, TreeDataProvider, ProviderResult, scm, SourceControl } from "vscode";
+import { WebviewViewProvider } from "vscode";
 import * as fs from "fs";
 import path from "path";
 import { sdkSotre } from "./store";
 
 export class WebProvider implements WebviewViewProvider {
   private context: vscode.ExtensionContext;
+  private messageHandler: Map<string, (callback?: Function) => Thenable<any>> = new Map();
+
   constructor(context: vscode.ExtensionContext) {
     this.context = context;
   }
 
-  resolveWebviewView(
-    webviewView: vscode.WebviewView,
-    context: vscode.WebviewViewResolveContext,
-    token: vscode.CancellationToken
-  ): void | Thenable<void> {
+  resolveWebviewView(webviewView: vscode.WebviewView, context: vscode.WebviewViewResolveContext, token: vscode.CancellationToken): void | Thenable<void> {
     webviewView.webview.options = {
       enableScripts: true
     };
 
     const { databaseURL } = sdkSotre.getState();
     webviewView.webview.html = this.getWebViewContent(this.context, "src/view/webview.html");
+
+    this.messageHandler.set("sync", async (cb?: Function) => {
+      await webviewView.webview.postMessage({ type: "sync" });
+      cb && cb();
+    });
+
+
     webviewView.webview.onDidReceiveMessage((data) => {
-      if (data === 'ready') {
-        webviewView.webview.postMessage({ type: 'render', databaseURL });
+      if (data === "ready") {
+        webviewView.webview.postMessage({ type: "render", databaseURL });
       }
     });
   }
 
-  // private async getHTMLContent(src: string): Promise<string> {
-  //   return new Promise((resolve, reject) => {
-  //     const htmlFilePath = path.join(__dirname, src); // HTML 文件的路径
-  //     fs.readFile(htmlFilePath, { encoding: "utf-8" }, (error, data) => {
-  //       if (error) {
-  //         reject(error);
-  //         return;
-  //       }
-  //       resolve(data);
-  //     });
-  //   });
-  // }
+  postMessage(key: string, cb?: Function) {
+    const fn = this.messageHandler.get(key);
+    fn && fn(cb);
+  }
 
   private getWebViewContent(context: vscode.ExtensionContext, templatePath: string) {
     const resourcePath = path.join(context.extensionPath, templatePath);
@@ -51,36 +48,4 @@ export class WebProvider implements WebviewViewProvider {
     });
     return html;
   }
-
-  // private getExtensionFileVscodeResource(context: vscode.ExtensionContext, relativePath: string) {
-  //   const diskPath = vscode.Uri.file(path.join(context.extensionPath, relativePath));
-  //   return diskPath.with({ scheme: "vscode-resource" }).toString();
-  // }
 }
-
-// export class TreeProvider implements TreeDataProvider<vscode.TreeItem> {
-//   getTreeItem(element: TreeView): vscode.TreeItem | Thenable<vscode.TreeItem> {
-//     return element;
-//   }
-
-//   async getChildren(element?: TreeView | undefined) {
-//     const items = ["aaa", "bb", "cc"].map((label) => {
-//       const treeItem = new TreeView(label, vscode.TreeItemCollapsibleState.None);
-//       // 为每个项添加命令
-//       treeItem.command = {
-//         command: "code-snippets.edit",
-//         title: "TreeView Item Click",
-//         arguments: [label] // 将项的标签作为参数传递
-//       };
-//       return treeItem;
-//     });
-
-//     return [...items];
-//   }
-// }
-
-// export class TreeView extends vscode.TreeItem {
-//   constructor(public readonly label: string, public readonly collapsibleState: vscode.TreeItemCollapsibleState) {
-//     super(label, collapsibleState);
-//   }
-// }
