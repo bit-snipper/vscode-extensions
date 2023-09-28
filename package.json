@@ -1,8 +1,8 @@
 {
-  "name": "code-snippets",
-  "displayName": "code-snippets",
-  "description": "code-snippets",
-  "version": "0.0.1",
+  "name": "bit-snipper",
+  "displayName": "Bit snipper",
+  "description": "favorites code snippets",
+  "version": "0.0.3-alpla",
   "engines": {
     "vscode": "^1.80.0"
   },
