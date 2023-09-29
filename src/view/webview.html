@@ -32,8 +32,7 @@
       const { type, databaseURL } = e.data;
 
       if (type === "render") {
-        const src = `https://code-snippets.zeabur.app?databaseURL=${databaseURL}`;
-        // const src = `http://localhost:5173/?databaseURL=${databaseURL}`;
+        const src = "https://code-snippets.zeabur.app?databaseURL="+databaseURL;
         const iframe = document.createElement("iframe");
         iframe.setAttribute("id", "external-web");
         iframe.src = src;

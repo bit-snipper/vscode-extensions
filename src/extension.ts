@@ -47,7 +47,7 @@ export async function activate(context: vscode.ExtensionContext) {
           },
           setSnippetsAction.Insert
         );
-        vscode.window.showInformationMessage("success");
+        vscode.window.showInformationMessage("upload success");
         webProvider.postMessage("sync", () => {});
       }
     }
@@ -67,7 +67,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // status bar button
   const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
-  statusBarItem.text = "😊code-snippets-debug";
+  statusBarItem.text = "😊code-snippets";
   statusBarItem.command = "code-snippets.create";
   statusBarItem.tooltip = "set baseUrl";
   statusBarItem.show();

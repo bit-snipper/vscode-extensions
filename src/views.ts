@@ -18,7 +18,58 @@ export class WebProvider implements WebviewViewProvider {
     };
 
     const { databaseURL } = sdkSotre.getState();
-    webviewView.webview.html = this.getWebViewContent(this.context, "src/view/webview.html");
+    // webviewView.webview.html = this.getWebViewContent(this.context, "src/view/webview.html");
+    webviewView.webview.html = `
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>code snippets</title>
+    <style>
+      html,
+      body {
+        position: fixed;
+        left: 0;
+        top: 0;
+        border: none;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    </style>
+  </head>
+  <body></body>
+  <script>
+    const vscode = acquireVsCodeApi();
+
+    window.addEventListener("message", (e) => {
+      const { type, databaseURL } = e.data;
+
+      if (type === "render") {
+        const src = "https://code-snippets.zeabur.app?databaseURL="+databaseURL;
+        const iframe = document.createElement("iframe");
+        iframe.setAttribute("id", "external-web");
+        iframe.src = src;
+
+        document.body.appendChild(iframe);
+      } else if (type === "sync") {
+        document.getElementById("external-web").contentWindow.postMessage({ type: "sync" }, "*");
+      }
+    });
+
+    vscode.postMessage("ready");
+  </script>
+</html>
+
+    `;
 
     this.messageHandler.set("sync", async (cb?: Function) => {
       await webviewView.webview.postMessage({ type: "sync" });
