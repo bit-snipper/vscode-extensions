@@ -8,7 +8,7 @@ export const create = async (context: vscode.ExtensionContext) => {
     const databaseURL = await vscode.window.showInputBox({
       prompt: "Please enter your databaseURL:"
     });
-    
+
     context.globalState.update("codesnippets-databaseURL", databaseURL);
 
     if (databaseURL) {
@@ -39,7 +39,6 @@ export const auth = async (context: vscode.ExtensionContext) => {
         databaseURL
       }
     });
-    vscode.window.showInformationMessage("login success");
   } else {
     create(context);
   }

@@ -66,11 +66,11 @@ export async function activate(context: vscode.ExtensionContext) {
   vscode.window.registerWebviewViewProvider("code-snippets.web", webProvider);
 
   // status bar button
-  const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
-  statusBarItem.text = "😊code-snippets";
-  statusBarItem.command = "code-snippets.create";
-  statusBarItem.tooltip = "set baseUrl";
-  statusBarItem.show();
+  // const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
+  // statusBarItem.text = "😊code-snippets";
+  // statusBarItem.command = "code-snippets.create";
+  // statusBarItem.tooltip = "set baseUrl";
+  // statusBarItem.show();
 
-  context.subscriptions.push(...[AuthDisposable, statusBarItem]);
+  context.subscriptions.push(AuthDisposable);
 }
